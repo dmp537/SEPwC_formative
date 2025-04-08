@@ -1,0 +1,10 @@
+usage: todo.py [-h] [-a ADD] [-l] [-r REMOVE]
+
+Command-line Todo List
+
+options:
+  -h, --help            show this help message and exit
+  -a ADD, --add ADD     Add a new task
+  -l, --list            List all tasks
+  -r REMOVE, --remove REMOVE
+                        Remove a task by index
