@@ -17,16 +17,29 @@ def add_task(task):
 
 def list_tasks():
     
-    with open(TASK_FILE, "r", encoding="utf-8") as file:
-        tasks = file.readlines()
+    # Check if task file exists before trying to read
+    if not os.path.exists(TASK_FILE):
+        return ""
+    
+    try:
+        # Open and read all tasks from the file
+        with open(TASK_FILE, "r", encoding="utf-8") as file:
+            tasks = file.readlines()
+        
+        # Format tasks with numbers
         counter = 1
         output_string = ""
         for task in tasks:
-            output_string = output_string + str(counter) + ". "+task
+            # Remove trailing newlines 
+            output_string = output_string + str(counter) + ". " + task.strip()
+            if counter < len(tasks):     # Don't add newline after the last item
+                output_string += "\n"
             counter = counter + 1
         
     return output_string
-
+except Exception:
+    # Return empty string if any errors occur
+    return ""
 
 def remove_task(index):
     return
