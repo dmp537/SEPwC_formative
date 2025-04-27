@@ -9,9 +9,11 @@ def add_task(task):
     Input - a task to add to the list
     Return - nothing
     """
-    
+    # Open file in append mode to add tasks on end 
+    # If file doesn't exist, file will be created
     with open(TASK_FILE, "a", encoding="utf-8") as file:
-        file.write(task + "\n")
+        # Write the task with a newline character
+        file.write(f"{task}\n")
 
 def list_tasks():
     
@@ -20,8 +22,8 @@ def list_tasks():
         counter = 1
         output_string = ""
         for task in tasks:
-            output_string = output_string + str(counter) + ". " + task
-            counter += 1
+            output_string = output_string + str(counter) + ". "+task
+            counter = counter + 1
         
     return output_string
 
