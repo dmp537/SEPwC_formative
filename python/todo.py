@@ -35,11 +35,12 @@ def list_tasks():
             if counter < len(tasks):     # Don't add newline after the last item
                 output_string += "\n"
             counter = counter + 1
-        
-    return output_string
-except Exception:
-    # Return empty string if any errors occur
-    return ""
+            
+        return output_string
+    except Exception:
+        # Return empty string if any errors occur
+        return ""
+    
 
 def remove_task(index):
     return
