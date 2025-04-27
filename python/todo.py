@@ -31,7 +31,6 @@ def list_tasks():
     # Check if task file exists before trying to read
     if not os.path.exists(TASK_FILE):
         return ""
-
     try:
         # Open and read all tasks from the file
         with open(TASK_FILE, "r", encoding="utf-8") as file:
@@ -46,10 +45,9 @@ def list_tasks():
             if counter < len(tasks):     # Don't add newline after the last item
                 output_string += "\n"
             counter = counter + 1
-
         return output_string
-    except Exception:
-        # Return empty string if any errors occur
+    except FileNotFoundError:
+        # Return empty string if file not found
         return ""
 
 
