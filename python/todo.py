@@ -48,7 +48,6 @@ def list_tasks():
 
 def remove_task(index):
     """Function: remove_task
-    
     Input - Index (starting at 1) of the task to remove
     Return - nothing
     """
@@ -62,18 +61,17 @@ def remove_task(index):
         with open(TASK_FILE, "r", encoding="utf-8") as file:
             tasks = file.readlines()
             
-        #check if index is positive and within range
+        # Check if index is positive and within range
         if index <=0 or index >len(tasks):
             return
         
         # Remove task from list 
         # Convert from 1-based user index 0-based index
-        task_index = index - 1
-        tasks.pop(task_index)
+        tasks.pop(index - 1)
         
         # Write the updated task list back to file
         with open(TASK_FILE, "w", encoding="utf-8") as file:
-            file.writelines(task)
+            file.writelines(tasks)
             
     except Exception:
                 # Return if errors occur
