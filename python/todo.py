@@ -1,7 +1,7 @@
 """
-Command-line Todo List Applicaiton
+Command-line Todo List Application
 
-CLI application for managing a todo list with add, list, and remove fucntioanlity
+CLI application for managing a todo list with add, list, and remove functionality
 The tasks are stored in a text file.
 """
 
@@ -111,6 +111,7 @@ def main():
     elif args.list:
         tasks = list_tasks()
         if tasks:
+            # Solution developed with assistance from ChatGPT
             # Ensure Unix-style line endings and add tailing newline
             formatted_output = tasks.replace('\r\n', '\n')
             # Ensure there is exactly one trailing newline
