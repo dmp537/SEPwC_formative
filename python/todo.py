@@ -7,6 +7,7 @@ The tasks are stored in a text file.
 
 import argparse
 import os
+import sys
 
 TASK_FILE = ".tasks.txt"
 
@@ -49,7 +50,6 @@ def list_tasks():
     except FileNotFoundError:
         # Return empty string if file not found
         return ""
-
 
 def remove_task(index):
     """Function: remove_task
@@ -104,19 +104,24 @@ def main():
             "-r",
             "--remove",
             help="Remove a task by index")
-
     args = parser.parse_args()
 
     if args.add:
         add_task(args.add)
-
     elif args.list:
         tasks = list_tasks()
-        print(tasks)
+        if tasks:
+            # Ensure Unix-style line endings and add tailing newline
+            formatted_output = tasks.replace('\r\n', '\n')
+            # Ensure there is exactly one trailing newline
+            if not formatted_output.endswith('\n'):
+                formatted_output += '\n'
 
+            # Write directly as binary
+            # To control exact byte output
+            sys.stdout.buffer.write(formatted_output.encode('utf-8'))
     elif args.remove:
         remove_task(int(args.remove))
-
     else:
         parser.print_help()
 
